@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<% var user %> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= translation.hamrohh %>
+    </title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/css_1100.css">
+    <link rel="stylesheet" href="/style/css_800.css">
+    <link rel="stylesheet" href="/style/css_560.css">
+    <link rel="stylesheet" href="/style/css_450.css">
+    <link rel="stylesheet" href="/style/css_380.css">
+    <link rel="stylesheet" href="/style/css_300.css">
+    <link rel="shortcut icon" href="/images/hamroh logo-03.png" type="image/x-icon">
+
+
+    <style>
+        .success_register {
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            position: fixed;
+            width: 50%;
+            height: 200px;
+            top: 25%;
+            left: 25%;
+            right: 25%;
+            background-color: #F9CA48;
+            z-index: 10000000000000000000000;
+            display: none;
+        }
+        .flexing {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .success_register p {
+            font-size: 23px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .btn_register {
+            border: none;
+            outline: none;
+            margin-top: 30px;
+            padding: 10px 30px;
+            background-color: #000000;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="success_register" id="register_modal">
+        <div class="flexing">
+            <p> <%= translation.success_register %></p>
+            <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+        </div>
+    </div>
+    <div class="success_register" id="login_modal">
+        <div class="flexing">
+            <p><%= translation.success_login  %> </p>
+            <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+        </div>
+    </div>
+    <div class="success_register" id="login_modal_error">
+        <div class="flexing">
+            <p><%= translation.failed_login  %> </p>
+            
+            <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+        </div>
+    </div>
+    <div class="success_register" id="error_filling">
+        <div class="flexing">
+            <p><%= translation.fill_up  %> </p>
+            <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+        </div>
+    </div>
+
+
+
+    <div class="root">
+        <div class="header">
+            <div class="header_top">
+                <div class="logo">
+                    <img src="/images/hamroh logo-02.png" alt="">
+                </div>
+                <div class="search">
+                    <div class="search_category">
+                        <div class="search_category_head">
+                            <p class="search_category_head_content">
+                                <%= translation.Barcha_tovarlar %>
+                            </p>
+                            <img src="/images/down_arrow.png" class="search_category_head_content">
+                        </div>
+                        <ul class="search_category_body">
+                        </ul>
+                    </div>
+                    <div class="search_input">
+                        <input type="search" name="name" placeholder="<%= translation.searchh %> ">
+                        <div> <a href="/api/search/client"> <img src="/images/loupe.png" alt=""> </a></div>
+                    </div>
+                    <!-- <form class="search_input" action="/api/search/client" method="GET">
+                        <input id="searings" type="search" name="name" placeholder="<%= translation.searchh %> ">
+                        <button type="submit" class="btn btn-warning p-2" >
+                            <img style="width: 30px; color: #F9CA48;" src="/images/loupe.png"   type="submit" alt="">
+                        </button>
+                </form> -->
+                </div>
+                <div class="header_top_right">
+                    <div class="user">
+                        <img src="/images/user.png" class="user_img">
+                        <div>
+                            <% if(!user){ %> 
+                            <p>
+                                <%= translation.institute %>
+                            </p>
+                            <p>
+                                <%= translation.aboutUs %>
+                            </p>
+                            <% } else{ %> 
+                                <p>
+                                    <%= user?.fullName%>
+                                </p>
+                               
+                                    <a href="/api/user/logout" style="padding: 3px; text-decoration: none; color: #fff; font-size: 18px;">
+                                    <%= translation.directors %>
+                                </a>
+                                
+                                <% } %> 
+                        </div>
+                    </div>
+                    <div class="language">
+                        <img src="/images/language.png" class="language_img">
+                        <div>
+                            <a href="/?clang=uz" style="text-decoration: none;">
+                                <div>
+                                    <p>
+                                        <%= translation.partnership %>
+                                    </p>
+                                    <img src="/images/uzbekistan.png" alt="">
+                                </div>
+                            </a>
+                            <a href="/?clang=ru" style="text-decoration: none;">
+                                <div>
+                                    <p>
+                                        <%= translation.campus %>
+                                    </p>
+                                    <img src="/images/russia.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/api/basket/all"><img src="/images/shopping-cart.png" alt=""></a>
+                </div>
+                <div class="registr" id="back_register">
+                    <div class="window">
+                        <div class="window_head">
+                            <%= translation.institute %>
+                        </div>
+                        <div class="window_body">
+                            <div class="option">
+                                <input type="text" id="input1" required>
+                                <label for="input1">
+                                    <%= translation.iiii %>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <input type="number" id="input3" required>
+                                <label for="input3">
+                                    <%= translation.telefon %>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <input type="password" id="input4" required>
+                                <label for="input4">
+                                    <%= translation.parol %>
+                                </label>
+                            </div>
+                            <button onclick="register_best()" id="register" class="send">
+                                <%= translation.ok %>
+                            </button>
+                        </div>
+                        <div class="close_registr">X</div>
+                    </div>
+                </div>
+                <div class="login" id="back_login">
+                    <div class="login_window">
+                        <div class="login_window_head">
+                            <%= translation.aboutUs %>
+                        </div>
+                        <div class="login_window_body">
+                            <div class="option">
+                                <input type="number" id="login_phone" required>
+                                <label for="login_phone">
+                                    <%= translation.telefon %>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <input type="password" id="login_password" required>
+                                <label for="login_password">
+                                    <%= translation.parol %>
+                                </label>
+                            </div>
+                            <button id="login_send" class="send">
+                                <%= translation.ok %>
+                            </button>
+                        </div>
+                        <div class="close_login">X</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="categories">
+                <div class="category_title">
+                    <img src="/images/menu.png" class="category_title_content">
+                    <p class="category_title_content">
+                        <%= translation.acca %>
+                    </p>
+                </div>
+                <ul class="select_group"></ul>
+            </div>
+            <div class="navbar">
+                <div class="box-burger-menu">
+                    <div class="burger-menu"></div>
+                </div>
+                <ul>
+                    <li><a href="/">
+                            <%= translation.ssahifa %>
+                        </a></li>
+                    <li><a href="/about">
+                            <%= translation.bizz %>
+                        </a></li>
+                    <li><a href="/delivery">
+                            <%= translation.Yetkazibberish %>
+                        </a></li>
+                    <li><a href="/location">
+                            <%= translation.Joylashuv %>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+        <%- body %>
+            <div class="footer">
+                <div class="footer_top">
+                    <div class="left">
+                        <div>
+                            <div class="icon"><img src="./images/operator.png" alt=""></div>
+                            <div class="body">
+                                <p>
+                                    <%= translation.Operatorbilanboglanish %>:
+                                </p>
+                                <p>+998 55 801 44 44 </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="icon"><img src="./images/location.png" alt=""></div>
+                            <div class="body">
+                                <p>
+                                    <%= translation.Joylashuv %>:
+                                </p>
+                                <p>
+                                    <%= translation.Toshkenttt %>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="icon"><img src="./images/message.png" alt=""></div>
+                            <div class="body">
+                                <p>
+                                    <%= translation.emmmail %>:
+                                </p>
+                                <p>hamroh@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="middle">
+                    <p>Mijozlarga xizmat ko'rsatish</p>
+                    <a href="#">Biz bilan bog'lanish</a>
+                    <a href="#">Mahsulot va yordam</a>
+                    <a href="#">Yetkazib berish va qaytarish</a>
+                    <a href="#">Foydalanish shartlari</a>
+                    <a href="#">Qaytarish siyosati</a>
+                </div> -->
+                    <div class="right">
+                        <p>
+                            <%= translation.kk %>
+                        </p>
+                        <div class="table">
+                            <div>
+                                <input type="text" required id="ism">
+                                <label for="ism">
+                                    <%= translation.ismm %>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="text" required id="    ">
+                                <label for="nomer">
+                                    <%= translation.telefon %>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="text" required id="matn">
+                                <label for="matn">
+                                    <%= translation.Xabar %>
+                                </label>
+                            </div>
+                            <button id="sendContact">
+                                <%= translation.xx %>
+                            </button>
+                        </div>
+                        <!-- <div class="imgs">
+                        <img src="./images/facebook.png" alt="">
+                        <img src="./images/instagram.png" alt="">
+                        <img src="./images/telegram.png" alt="">
+                    </div> -->
+                    </div>
+                </div>
+                <div class="footer_bottom">
+                    <div>
+                        <%= translation.uzz %> (+998 99 303 34 84 )
+                    </div>
+                    <div>
+                        <img src="./images/Uzcard.png" alt="">
+                        <img src="./images/Visa.png" alt="">
+                        <img src="./images/mastercard.png" alt="">
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/axios.min.js"></script>
+    <script src="/script/index.js"></script>
+    <script>
+        
+        function reload_all() {
+            location.reload()
+        }
+        // Ro'yhatdan o'tish
+        const register = document.getElementById('register');
+        
+        const fullName = document.getElementById('input1')
+        const password = document.getElementById('input4')
+        const phone = document.getElementById('input3')
+        function register_best() {
+            if (fullName.value == "" || password.value == "" || phone.value == "") {
+                document.getElementById('back_register').style.display = 'none'
+                document.getElementById('error_filling').style.display = 'block'
+                document.getElementById('error_filling').style.zIndex = '111111111111111111111111111'
+            }
+            axios({
+                url: "/api/user/create",
+                method: "POST",
+                data: {
+                    fullName: fullName.value,
+                    password: password.value,
+                    phone: phone.value
+                }
+            }).then(res => {
+                document.getElementById('back_register').style.display = 'none'
+                document.getElementById('register_modal').style.display = 'block'
+            })
+        }
+        // Avtorizatsiyadan o'tish
+        const login_send = document.getElementById('login_send');
+        const login_phone = document.getElementById('login_phone')
+        const login_password = document.getElementById('login_password')
+        login_send.addEventListener("click", () => {
+            if (login_phone.value == "" || login_password.value == "") {
+                document.getElementById('back_login').style.display = 'none'
+                document.getElementById('error_filling').style.display = 'block'
+                document.getElementById('error_filling').style.zIndex = '111111111111111111111111111'
+            }
+            axios({
+                url: "/api/user/login",
+                method: "POST",
+                data: {
+                    phone: login_phone.value,
+                    password: login_password.value,
+                }
+            }).then(res => {
+                document.getElementById('back_login').style.display = 'none'
+                document.getElementById('login_modal').style.display = 'block'
+            })
+            .catch((error) => {
+                document.getElementById('back_login').style.display = 'none'
+                document.getElementById('login_modal_error').style.display = 'block'
+            })
+            
+        })
+        
+        // Kontakt orqali aloqa qilish
+        const sendContact = document.getElementById('sendContact');
+        const tel = document.getElementById('nomer')
+        const name = document.getElementById('ism')
+        const message = document.getElementById('matn')
+        sendContact.addEventListener("click", () => {
+            axios({
+                url: "/api/contact/add",
+                method: "POST",
+                data: {
+                    tel: tel.value,
+                    name: name.value,
+                    message: message.value
+                }
+            }).then(res => {
+                // console.log(res)
+                location.reload()
+            })
+        })
+    </script>
+</body>
+</html>

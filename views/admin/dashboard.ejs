@@ -1,0 +1,200 @@
+<div class="page-title-box">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <h4 >Umumiy statistika</h4>
+        </div>
+        
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4 col-md-4">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-account-group
+                    bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Foydalanuvchilar soni</h5>
+                </div>
+                <h6 class="mt-4"><%= all_user  %> </h6>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-md-4">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-basket bg-success text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Mahsulotlar soni</h5>
+                </div>
+                <h6 class="mt-4"><%= all_product %> </h6>
+                
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="col-md-4 col-md-4">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-buffer bg-danger text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Reklamalar soni (slider)</h5>
+                </div>
+                <h6 class="mt-4"><%= all_slider %> </h6>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-md-4">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-buffer bg-secondary text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Chegirmalar soni</h5>
+                </div>
+                <h6 class="mt-4"><%= all_chegirma %> </h6>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+</div>
+
+
+
+
+
+<div class="page-title-box">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <h4 >Umumiy mahsultlarga oid statistika</h4>
+        </div>
+        
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4 col-md-4">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-google-circles-group bg-primary text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Barcha  buyurtmalar soni</h5>
+                </div>
+                <h6 class="mt-4"> <%= all_order %> </h6>
+               
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-md-4">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-layers-outline bg-primary text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Buyurtmadan sotilmagan mahsulotlar soni</h5>
+                </div>
+                <h6 class="mt-4"> <%= all_order_noactive %> </h6>
+               
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-md-4">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-car-light-high bg-primary text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Sotilgan mahsulotlarning umumiy soni</h5>
+                </div>
+                <h6 class="mt-4"> <%= all_order_active %> </h6>
+               
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="fas fa-money-bill-alt bg-warning text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Barcha mahsulotlarning umumiy narxlari</h5>
+                </div>
+               
+                 <% if(all_product_summ == "") {%>
+                    <h6 class="mt-4"> --- </h6>
+                    <% }else{%> 
+                        <h6 class="mt-4"> <%= all_product_summ[0].totalSum %> so'm</h6>
+                        <% } %>
+               
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="fas fa-money-bill-alt bg-warning text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Sotilgan mahsulotlardan tushgan daromad</h5>
+                </div>
+                <% if(active_summ == "") {%>
+                    <h6 class="mt-4"> --- </h6>
+                    <% }else{%> 
+                         <h6 class="mt-4"> <%= active_summ[0].totalSum %> so'm</h6>
+                        <% } %> 
+               
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="fas fa-money-bill-alt bg-warning text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Buyurtmadan kelib sotilmagan mahsulotlar summasi</h5>
+                </div>
+                <% if(noactive_summ == "") {%>
+                    <h6 class="mt-4"> --- </h6>
+                    <% }else{%> 
+                        <h6 class="mt-4"> <%= noactive_summ[0].totalSum %> so'm</h6>
+                        <% } %>
+               
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+

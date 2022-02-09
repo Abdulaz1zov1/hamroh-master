@@ -1,0 +1,49 @@
+<% var product %> 
+        <div class="category_page">
+            <div class="cards">
+                <% for(let item of product || []) { %>
+                    <div class="box">
+                        <a href="/product/<%= item._id  %> ">
+                            <div class="card_icon">
+                                <img src="<%= item?.poster %>" alt="">
+                            </div>
+                            <div class="about_product">
+                                <% if(lang ==='uz' ){ %>
+                                    <p><%= item?.name?.uz %></p>
+                                    <% } %>
+                                    <%  if(lang==='ru' ){ %>
+                                        <p><%= item?.name?.ru %></p>
+                                    <% }%>
+                                    <%  if(lang==undefined ){ %>
+                                        <p><%= item?.name?.uz %></p>
+                                    <% } %>
+                                
+                                <!-- <p>Samsung s21 ultra</p> -->
+                            </div>  
+                            <div class="sharxlar">
+                                <div>
+                                    <img src="/images/Star 11.png" alt="">
+                                    <img src="/images/Star 11.png" alt="">
+                                    <img src="/images/Star 11.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="/images/comment.png" alt="">
+                                    <p class="comment_number">0</p>
+                                    <p><%= translation.sharhlar %> </p>
+                                </div>
+                                <p></p>
+                            </div>
+                        </a>
+                        <div class="price">
+                            <p><%= translation.pag %> :</p>
+                            <p class="summa"><%= item?.price %></p>
+                            <p><%= translation.som %></p>
+                        </div>
+                        <div class="card_btn"><button><%= translation.savatcha %></button></div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+
+
+   

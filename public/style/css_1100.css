@@ -1,0 +1,80 @@
+@media only screen and (max-width:1100px)
+{
+	:root{
+
+        --pagetitle: 3vw;
+        --two: 2.6vw;
+        --title: 2.2vw;
+        --context: 2.1vw;
+        --smallcontext: 1.8vw;
+        --one: 1.6vw;
+    }
+
+    
+
+    .aksiya .aksiya_carousel .wrapper .carousel .card,
+    .recommend .recommend_carousel .recommend_wrapper .recommend_cards .recommend_card,
+    .new .new_carousel .new_wrapper .new_cards .new_card,
+    .maishiy .maishiy_carousel .maishiy_wrapper .maishiy_cards .maishiy_card {
+        min-width: 24.5vw;
+    }
+
+    .aksiya .aksiya_carousel .wrapper .carousel .card .box,
+    .recommend .recommend_carousel .recommend_wrapper .recommend_cards .recommend_card .box,
+    .new .new_carousel .new_wrapper .new_cards .new_card .box,
+    .maishiy .maishiy_carousel .maishiy_wrapper .maishiy_cards .maishiy_card .box {
+        width: 24.5vw;
+    }
+    .header .header_top .header_top_right .language div div img {
+        width: 2.4vw;
+    }
+      
+    .header_top_right img {
+        width: 2.7vw;
+    }
+
+    /* .buy_products .card {
+        width: 26vw;
+    } */
+
+    .root .buy_product_cards .similar_products>span {
+        padding-bottom: 1.2vh;
+    }
+    .root .buy_product_cards .send_basket {
+        border-radius: 2.5vw;
+    }
+    .root .buy_product_cards .pay_summa {
+        padding: 5vh 18vw;
+    }
+    .category_page .cards .box {
+        width: 27vw;
+        padding: 2vh 2vw;
+    }
+
+    .registr .window,
+    .login .login_window,
+    .sms_code .card,
+    .page .window .shop_window {
+        width: 68vw;
+    }
+
+
+    .header .header_top .header_top_right .user div {
+        width: 25vw;
+    }
+
+    .my_services {
+        padding: 4vh 10vw;
+    }
+
+    .aksiya .aksiya_carousel .wrapper .carousel .card .box,
+    .recommend .recommend_carousel .recommend_wrapper .recommend_cards .recommend_card .box,
+    .new .new_carousel .new_wrapper .new_cards .new_card .box,
+    .maishiy .maishiy_carousel .maishiy_wrapper .maishiy_cards .maishiy_card .box {
+        padding: 0.7vh 1.5vw;
+    }
+
+
+
+
+}

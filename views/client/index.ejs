@@ -1,0 +1,588 @@
+<style>
+    .success_register {
+        border-radius: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        position: fixed;
+        width: 50%;
+        height: 200px;
+        top: 25%;
+        left: 25%;
+        right: 25%;
+        background-color: #F9CA48;
+        z-index: 10000000000000000000000;
+        display: none;
+    }
+
+    .flexing {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .success_register p {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .btn_register {
+        border: none;
+        outline: none;
+        margin-top: 30px;
+        padding: 10px 30px;
+        background-color: #000000;
+        color: white;
+        font-weight: 600;
+        border-radius: 10px;
+    }
+</style>
+
+
+<div class="success_register" id="failed_basket">
+    <div class="flexing">
+        <p>
+            <%= translation.before_login %>
+        </p>
+
+        <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+    </div>
+</div>
+<div class="success_register" id="success_basket">
+    <div class="flexing">
+        <p>
+            <%= translation.add_basket %>
+        </p>
+        <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="carousel-wrapper">
+    <div class="carousel slider_data">
+         <img class="carousel__photo initial" src="<%= SLIDER[0]?.image %>">
+        <% for(let i=1; i<SLIDER.length; i++) {%>
+            <img class="carousel__photo" src="<%= SLIDER[i]?.image %>">
+            <!-- <img class="carousel__photo initial" src="/images/carusel_img_3.png">
+            <img class="carousel__photo" src="/images/carusel_img_2.png">
+            <img class="carousel__photo" src="/images/carusel_img_1.png">
+            <img class="carousel__photo" src="/images/carusel_5.png"> -->
+            <% } %>
+
+                <div class="carousel__button--next"></div>
+                <div class="carousel__button--prev"></div>
+    </div>
+</div>
+<div class="my_services">
+    <div>
+        <img src="/images/wallet.png" alt="">
+        <p>
+            <%= translation.iss %>
+        </p>
+    </div>
+    <div>
+        <img src="/images/truck.png" alt="">
+        <p>
+            <%= translation.yet %>
+        </p>
+    </div>
+    <div>
+        <img src="/images/wallet (1).png" alt="">
+        <p>
+            <%= translation.kredd %>
+        </p>
+    </div>
+    <div>
+        <img src="/images/warranty.png" alt="">
+        <p>
+            <%= translation.tovv %>
+        </p>
+    </div>
+    <!-- <div>
+        <img src="/images/history.png" alt="">
+        <p>Kompaniya tarixi</p>
+    </div> -->
+</div>
+<div class="banner"><img src="/images/banner1.jpg" alt=""></div>
+
+<div class="aksiya">
+    <div class="aksiya_title">
+        <span>
+            <%= translation.aks %>
+                </sp>
+    </div>
+    <div class="aksiya_carousel">
+        <div class="left_arrow"><img src="/images/left-arrow.png" alt=""></div>
+        <div class="wrapper">
+            <ul class="carousel" data-target="carousel">
+
+                <% for (let item of OFF_PRODUCT) {%>
+                    <li class="card" data-target="card">
+                        <div class="box">
+                            <a href="/product/<%=item?._id  %>">
+                                <div class="card_head">
+                                    <p>
+                                        <%= translation.Aksiya %>
+                                    </p>
+                                </div>
+                                <div class="card_icon">
+                                    <img src="<%= item?.poster  %>" alt="">
+                                </div>
+                                <div class="about_product">
+                                    <% if(lang==='uz' ){ %>
+                                        <p>
+                                            <%= item?.categoryID?.name?.uz %>
+                                        </p>
+                                        <% } %>
+                                            <% if(lang==='ru' ){ %>
+                                                <p>
+                                                    <%= item?.categoryID?.name?.ru %>
+                                                </p>
+                                                <% }%>
+                                                    <% if(lang==undefined ){ %>
+                                                        <p>
+                                                            <%= item?.categoryID?.name?.uz %>
+                                                        </p>
+                                                        <% } %>
+
+                                                            <% if(lang==='uz' ){ %>
+                                                                <p>
+                                                                    <%= item?.name?.uz %>
+                                                                </p>
+                                                                <% } %>
+                                                                    <% if(lang==='ru' ){ %>
+                                                                        <p>
+                                                                            <%= item?.name?.ru %>
+                                                                        </p>
+                                                                        <% }%>
+                                                                            <% if(lang==undefined ){ %>
+                                                                                <p>
+                                                                                    <%= item?.name?.uz %>
+                                                                                </p>
+                                                                                <% } %>
+
+                                </div>
+                            </a>
+                            <div class="sharxlar">
+                                <div>
+                                    <img onclick="mark('<%= item?._id %>', 1)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 2)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 3)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 4)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 5)" src="/images/Star 11.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="/images/comment.png" alt="">
+                                    <p class="comment_number">0</p>
+                                    <p>
+                                        <%= translation.sharhlar %>
+                                    </p>
+                                </div>
+                                <p></p>
+                            </div>
+                            <div class="price">
+                                <p>
+                                    <%= translation.pag %>:
+                                </p>
+                                <p class="summa">
+                                    <%= item?.price %>
+                                </p>
+                                <p>
+                                    <%= translation.som %>
+                                </p>
+                            </div>
+                            <div class="card_btn"><button onclick="savatchaga_qoshish('<%= item?._id %>')">
+                                    <%= translation.savatcha %>
+                                </button></div>
+                        </div>
+                    </li>
+                    <% } %>
+
+
+
+            </ul>
+        </div>
+        <div class="right_arrow"><img src="/images/right-arrow.png" alt=""></div>
+
+    </div>
+</div>
+<div class="recommend">
+    <div class="recommend_title">
+        <span>
+            <%= translation.tavv %>
+        </span>
+    </div>
+    <div class="recommend_carousel">
+        <div class="left_arrow_1"><img src="/images/left-arrow.png" alt=""></div>
+        <div class="recommend_wrapper">
+            <ul class="recommend_cards" data-target="recommend_carousel">
+
+
+                <% for (let item of RECOMMENDED_PRODUCT) {%>
+                    <li class="recommend_card" data-target="recommend_card">
+                        <div class="box">
+                            <a href="/product/<%=item?._id  %>">
+                                <div class="card_head">
+                                    <p>
+                                        <%= translation.tavv %>
+                                    </p>
+                                </div>
+                                <div class="card_icon">
+                                    <img src="<%= item?.poster  %>" alt="">
+                                </div>
+                                <div class="about_product">
+                                    <% if(lang==='uz' ){ %>
+                                        <p>
+                                            <%= item?.categoryID?.name?.uz %>
+                                        </p>
+                                        <% } %>
+                                            <% if(lang==='ru' ){ %>
+                                                <p>
+                                                    <%= item?.categoryID?.name?.ru %>
+                                                </p>
+                                                <% }%>
+                                                    <% if(lang==undefined ){ %>
+                                                        <p>
+                                                            <%= item?.categoryID?.name?.uz %>
+                                                        </p>
+                                                        <% } %>
+
+                                                            <% if(lang==='uz' ){ %>
+                                                                <p>
+                                                                    <%= item?.name?.uz %>
+                                                                </p>
+                                                                <% } %>
+                                                                    <% if(lang==='ru' ){ %>
+                                                                        <p>
+                                                                            <%= item?.name?.ru %>
+                                                                        </p>
+                                                                        <% }%>
+                                                                            <% if(lang==undefined ){ %>
+                                                                                <p>
+                                                                                    <%= item?.name?.uz %>
+                                                                                </p>
+                                                                                <% } %>
+                                </div>
+                            </a>
+                            <div class="sharxlar">
+                                <div>
+                                    <img onclick="mark('<%= item?._id %>', 1)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 2)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 3)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 4)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 5)" src="/images/Star 11.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="/images/comment.png" alt="">
+                                    <p class="comment_number">0</p>
+                                    <p>
+                                        <%= translation.sharhlar %>
+                                    </p>
+                                </div>
+                                <p></p>
+                            </div>
+                            <div class="price">
+                                <p>
+                                    <%= translation.pag %>:
+                                </p>
+                                <p class="summa">
+                                    <%= item?.price %>
+                                </p>
+                                <p>
+                                    <%= translation.som %>
+                                </p>
+                            </div>
+                            <div class="card_btn"><button onclick="savatchaga_qoshish('<%= item?._id %>')">
+                                    <%= translation.savatcha %>
+                                </button></div>
+                        </div>
+                    </li>
+                    <% } %>
+
+
+            </ul>
+        </div>
+        <div class="right_arrow_1"><img src="/images/right-arrow.png" alt=""></div>
+
+    </div>
+</div>
+<div class="banner"><img src="/images/banner1.jpg" alt=""></div>
+<div class="new">
+    <div class="new_title">
+        <span>
+            <%= translation.yyan %>
+        </span>
+    </div>
+    <div class="new_carousel">
+        <div class="left_arrow_2"><img src="/images/left-arrow.png" alt=""></div>
+        <div class="new_wrapper">
+            <ul class="new_cards" data-target="new_carousel">
+
+                <% for (let item of NEW_PRODUCT) {%>
+                    <li class="new_card" data-target="new_card">
+                        <div class="box">
+                            <a href="/product/<%=item?._id  %>">
+                                <div class="card_head">
+                                    <p>
+                                        <%= translation.yyyann %>
+                                    </p>
+                                </div>
+                                <div class="card_icon">
+                                    <img src="<%= item?.poster  %>" alt="">
+                                </div>
+                                <div class="about_product">
+                                    <% if(lang==='uz' ){ %>
+                                        <p>
+                                            <%= item?.categoryID?.name?.uz %>
+                                        </p>
+                                        <% } %>
+                                            <% if(lang==='ru' ){ %>
+                                                <p>
+                                                    <%= item?.categoryID?.name?.ru %>
+                                                </p>
+                                                <% }%>
+                                                    <% if(lang==undefined ){ %>
+                                                        <p>
+                                                            <%= item?.categoryID?.name?.uz %>
+                                                        </p>
+                                                        <% } %>
+
+                                                            <% if(lang==='uz' ){ %>
+                                                                <p>
+                                                                    <%= item?.name?.uz %>
+                                                                </p>
+                                                                <% } %>
+                                                                    <% if(lang==='ru' ){ %>
+                                                                        <p>
+                                                                            <%= item?.name?.ru %>
+                                                                        </p>
+                                                                        <% }%>
+                                                                            <% if(lang==undefined ){ %>
+                                                                                <p>
+                                                                                    <%= item?.name?.uz %>
+                                                                                </p>
+                                                                                <% } %>
+                                </div>
+                            </a>
+                            <div class="sharxlar">
+                                <div>
+                                    <img onclick="mark('<%= item?._id %>', 1)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 2)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 3)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 4)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 5)" src="/images/Star 11.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="/images/comment.png" alt="">
+                                    <p class="comment_number">0</p>
+                                    <p>
+                                        <%= translation.sharhlar %>
+                                    </p>
+                                </div>
+                                <p></p>
+                            </div>
+                            <div class="price">
+                                <p>
+                                    <%= translation.pag %>:
+                                </p>
+                                <p class="summa">
+                                    <%= item?.price %>
+                                </p>
+                                <p>
+                                    <%= translation.som %>
+                                </p>
+                            </div>
+                            <div class="card_btn"><button onclick="savatchaga_qoshish('<%= item?._id %>')">
+                                    <%= translation.savatcha %>
+                                </button></div>
+                        </div>
+                    </li>
+                    <% } %>
+
+
+            </ul>
+        </div>
+        <div class="right_arrow_2"><img src="/images/right-arrow.png" alt=""></div>
+
+    </div>
+</div>
+<div class="maishiy">
+    <div class="maishiy_title">
+        <span>
+            <%= translation.mashh %>
+        </span>
+    </div>
+    <div class="maishiy_carousel">
+        <div class="left_arrow_3"><img src="/images/left-arrow.png" alt=""></div>
+        <div class="maishiy_wrapper">
+            <ul class="maishiy_cards" data-target="maishiy_carousel">
+
+
+
+                <% for (let item of MAISHIY) {%>
+                    <li class="maishiy_card" data-target="maishiy_card">
+                        <div class="box">
+                            <a href="/product/<%=item?._id  %>">
+                                <div class="card_head">
+                                    <p>
+                                        <%= translation.mashh %>
+                                    </p>
+                                </div>
+                                <div class="card_icon">
+                                    <img src="<%= item?.poster %>" alt="">
+                                </div>
+                                <div class="about_product">
+                                    <% if(lang==='uz' ){ %>
+                                        <p>
+                                            <%= item?.categoryID?.name?.uz %>
+                                        </p>
+                                        <% } %>
+                                            <% if(lang==='ru' ){ %>
+                                                <p>
+                                                    <%= item?.categoryID?.name?.ru %>
+                                                </p>
+                                                <% }%>
+                                                    <% if(lang==undefined ){ %>
+                                                        <p>
+                                                            <%= item?.categoryID?.name?.uz %>
+                                                        </p>
+                                                        <% } %>
+
+                                                            <% if(lang==='uz' ){ %>
+                                                                <p>
+                                                                    <%= item?.name?.uz %>
+                                                                </p>
+                                                                <% } %>
+                                                                    <% if(lang==='ru' ){ %>
+                                                                        <p>
+                                                                            <%= item?.name?.ru %>
+                                                                        </p>
+                                                                        <% }%>
+                                                                            <% if(lang==undefined ){ %>
+                                                                                <p>
+                                                                                    <%= item?.name?.uz %>
+                                                                                </p>
+                                                                                <% } %>
+                                </div>
+                            </a>
+                            <div class="sharxlar">
+                                <div>
+                                    <img onclick="mark('<%= item?._id %>', 1)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 2)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 3)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 4)" src="/images/Star 11.png" alt="">
+                                    <img onclick="mark('<%= item?._id %>', 5)" src="/images/Star 11.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="/images/comment.png" alt="">
+                                    <p class="comment_number">0</p>
+                                    <p>
+                                        <%= translation.sharhlar %>
+                                    </p>
+                                </div>
+                                <p></p>
+                            </div>
+                            <div class="price">
+                                <p>
+                                    <%= translation.pag %>:
+                                </p>
+                                <p class="summa">
+                                    <%= item?.price %>
+                                </p>
+                                <p>
+                                    <%= translation.som %>
+                                </p>
+                            </div>
+                            <div class="card_btn"><button onclick="savatchaga_qoshish('<%= item?._id %>')">
+                                    <%= translation.savatcha %>
+                                </button></div>
+                        </div>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+        <div class="right_arrow_3"><img src="/images/right-arrow.png" alt=""></div>
+
+    </div>
+</div>
+
+
+<% if(!user) {%>
+    <input type="hidden" id="user_id">
+    <% }else {%>
+        <input type="hidden" id="user_id" value="<%= user._id %>">
+        <% }%>
+
+
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="/axios.min.js"></script>
+            <script>
+
+                function reload_all() {
+                    location.reload()
+                }
+
+                const user_id = document.getElementById('user_id')
+                function savatchaga_qoshish(product_id) {
+                    if (user_id.value == "") {
+                        document.getElementById('failed_basket').style.display = "block"
+                    } else  {
+                        axios({
+                            url: "/api/basket",
+                            method: "POST",
+                            data: {
+                                productID: product_id,
+                                userID: user_id.value
+                            }
+                        }).then(res => {
+                            document.getElementById('success_basket').style.display = "block"
+                        })
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+                // Yulduzcha uchun
+                function mark(product_id, numbers) {
+                    axios({
+                        url: "/api/rating/add",
+                        method: "POST",
+                        data: {
+                            rating: numbers,
+                            product: product_id,
+                        }
+                    }).then(res => {
+                        location.reload()
+                        // console.log(res.data)
+                    })
+                }
+
+
+
+
+
+
+
+
+
+
+
+            </script>

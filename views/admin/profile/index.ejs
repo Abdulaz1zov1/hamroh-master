@@ -1,0 +1,31 @@
+<div class="pt-3 pb-3 pl-3">
+    <h4>Tahrirlash</h4>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mt-3"
+        style="display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap;">
+        <form method="POST" action="<%=`/api/auth/${result._id}?_method=PUT`%>" class="col-md-8">
+            <div class="mb-3">
+                <label>Foydalanuvchining ismi</label>
+                <input name="fullName" type="text" class="form-control" value="<%= result.fullName %>"  />
+            </div>
+            
+            <div class="mb-3">
+                <label>Foydalanuvchining pochtsi</label>
+                <input name="email" type="email" class="form-control" value="<%=  result.email %>"  />
+            </div>
+            
+            <div class="mb-3">
+                <label>Foydalanuvchining aproli</label>
+                <input name="password" type="password" class="form-control" value=""  />
+            </div>
+            
+    
+            <button type="submit" class="btn btn-primary col-md-5 mt-3">Saqlash</button>
+        </form>
+
+
+    </div>
+
+</div>

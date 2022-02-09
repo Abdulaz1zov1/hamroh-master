@@ -1,0 +1,348 @@
+@media only screen and (max-width:560px)
+{
+	:root{
+    --pagetitle: 4.3vw;
+    --two: 3.8vw;
+    --title: 3.5vw;
+    --context: 3.3vw;
+    --smallcontext: 3.1vw;
+    --one: 2.9vw;
+  }
+
+  body {
+    overflow-x: hidden!important;
+  }
+
+  .root .about_we {
+    padding: 2rem 3rem;
+  }
+
+
+    .aksiya .aksiya_carousel .wrapper .carousel .card,
+    .recommend .recommend_carousel .recommend_wrapper .recommend_cards .recommend_card,
+    .new .new_carousel .new_wrapper .new_cards .new_card,
+    .maishiy .maishiy_carousel .maishiy_wrapper .maishiy_cards .maishiy_card {
+        min-width: 37vw;
+        margin-right: 3vw;
+    }
+
+    .aksiya .aksiya_carousel .wrapper .carousel .card .box,
+    .recommend .recommend_carousel .recommend_wrapper .recommend_cards .recommend_card .box,
+    .new .new_carousel .new_wrapper .new_cards .new_card .box,
+    .maishiy .maishiy_carousel .maishiy_wrapper .maishiy_cards .maishiy_card .box {
+        width: 37vw;
+        padding: 20px 3vw;
+    }
+
+    
+.carousel__photo {
+    height: 330px;
+}
+
+.box-burger-menu {
+    width: 8vw;
+    height: 40px;
+}
+
+  .header_top .search .search_input input {
+    padding-right: 8vw;
+  }
+
+.header_top .search .search_input div img {
+  width: 75%;
+}
+
+.carousel__button--prev,
+  .carousel__button--next {
+    top:50%;
+    width: 5vw;
+    height: 5vw;
+  }
+  .carousel__button--prev {
+    left:1vw;
+  }
+  .carousel__button--next {
+    right:1vw;
+  }
+  .carousel__button--prev::after,
+  .carousel__button--next::after {
+    width: 1.8vw;
+    height: 1.8vw;
+    top: 50%;
+    left: 58%;
+  }
+  .carousel__button--next::after {
+    left: 42%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+
+  .header_top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 125px;
+    padding: 0 4vw;
+    position: relative;
+    padding-top: 0!important;
+}
+
+.header_top .logo {
+    width: 50vw;
+    height: 70px!important;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header_top .logo img {
+  width: 65%;
+
+}
+
+
+.header_top .header_top_right {
+  width: 30vw;
+  position: absolute;
+  top: 0;
+  right: 4vw;
+  height: 70px;
+  padding-right: 0;
+}
+
+.header_top .search .search_category .search_category_head img {
+  width: 2.7vw;
+}
+
+.header_top .header_top_right div>img,
+.header_top .header_top_right a>img {
+  width: 5.5vw;
+}
+
+.header_top .search {
+  width: 100vw;
+  height: 45px;
+  margin-bottom: 10px;
+}
+
+.header_top .search .search_category {
+  width: 36vw;
+  height: 100%;
+}
+
+.header_top .search .search_input {
+  left: 36vw;
+  width: 56vw;
+  height: 100%;
+}
+
+.header_top .search .search_input div {
+  width: 7vw;
+}
+
+.header_top .search .search_input div img {
+  width: 60%;
+}
+
+.root .dostavka .dostavka_head {
+  height: 58vh;
+}
+.root .dostavka .dostavka_head img {
+  height: 100%;
+}
+
+.header .header_top .header_top_right .user div {
+  width: 45vw!important;
+  z-index: 9000000000000000000;
+}
+
+.header .header_top .header_top_right .language div {
+  width: 24vw!important;
+}
+
+/* .buy_products .card {
+  width: 40vw;
+} */
+
+.header .header_top .header_top_right .language div div img {
+  width: 4vw!important;
+}
+
+
+.buy_products .card .card_body .number_product div>p {
+  width: 3.5vw;
+}
+.buy_products .card .card_body .number_product div input {
+  width: 8vw;
+}
+
+.root .buy_product_cards .similar_products .cards .box {
+  width: 42vw;
+  padding: 3vh 2.5vw;
+}
+
+.root .buy_product_cards .send_basket {
+  border-radius: 4vw;
+}
+
+.root .buy_product_cards .pay_summa {
+  padding: 5vh 10vw;
+}
+
+.root .buy_product_cards .pay_summa .taqsimot>div {
+  width: 48%;
+  border-radius: 2.5vw;
+  text-align: center;
+  max-height: 100px;
+}
+
+.root .buy_product_cards .pay_summa .month {
+  border-radius: 3vw;
+}
+
+.root .buy_product_cards .pay_summa .month div label {
+  border-radius: 3vw;
+}
+.root .buy_product_cards .head {
+  flex-direction: column;
+}
+  
+.root .buy_product_cards .head .left {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.root .buy_product_cards .head .right {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.root .buy_product_cards .head .left .imgs .active {
+  border: 0.7vw solid #082f5e;
+}
+
+.root .buy_product_cards .head .left .imgs div {
+  border-radius: 2.4vw;
+}
+
+.category_page .cards .box {
+  width: 42vw;
+  padding: 2vh 4vw;
+}
+
+.registr .window,
+.login .login_window,
+.sms_code .card,
+.page .window .shop_window {
+    width: 80vw;
+    border-radius: 3vw;
+}
+.close_registr,
+.close_login,
+.close_buy_products,
+.page .window .shop_window .close_shop {
+  top: -3vw;
+  right: -3vw;
+  width: 7vw;
+  height: 7vw;
+}
+
+.window_body,
+.login_window_body {
+  padding: 2vh 18vw;
+}
+
+.window_head,
+.login_window_head {
+  border-radius: 3vw 3vw 0 0;
+}
+
+.root .buy_product_cards .head .left .imgs>img {
+  width: 3.5vw;
+}
+
+.aksiya .aksiya_carousel .left_arrow,
+.aksiya .aksiya_carousel .right_arrow,
+.recommend .recommend_carousel .left_arrow_1,
+.recommend .recommend_carousel .right_arrow_1,
+.new .new_carousel .left_arrow_2,
+.new .new_carousel .right_arrow_2,
+.maishiy .maishiy_carousel .left_arrow_3,
+.maishiy .maishiy_carousel .right_arrow_3 {
+  width: 4vw;
+  height: 4vw;
+}
+
+.buy_products {
+  display: flex;
+  flex-wrap: wrap;
+  }
+  
+  .title_product {
+  display: none;
+  }
+  
+  .buy_products .card {
+  width: 45%;
+  flex-direction: column;
+  border-radius: 2.5vw;
+  margin-right: 5%;
+  padding-bottom: 1vh;
+  }
+  
+  .buy_products .card .card_icon {
+  width: 70%;
+  height: 110px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  }
+  .buy_products .card .card_icon img {
+  width: 70%;
+  }
+  .buy_products .card .card_name {
+  width: 80%;
+  margin: 0 auto;
+  }
+  .buy_products .card .card_name p {
+  text-align: center;
+  }
+  
+  .buy_products .card .card_price,
+  .buy_products .card .all_price {
+  width: 60%;
+  margin: 0 auto;
+  }
+  
+  .buy_products .card .number_product {
+  display: flex;
+  align-items: center;
+  font-size: var(--context);
+  width: 50%;
+  }
+  .buy_products .card .number_product div {
+  border-radius: 1vw;
+  }
+  
+  .buy_products .card .card_btn {
+  width: 70%;
+  }
+  .buy_products .card .card_btn button {
+  border-radius: 3vw;
+  }
+  
+  .page .buy_product {
+    width: 50vw;
+    border-radius: 5vw;
+  }
+  
+  .page .buy_products .card {
+    width: 70vw;
+    margin: 15px auto;
+  }
+  
+  
+
+}   

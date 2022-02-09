@@ -1,0 +1,24 @@
+<div class="pt-3 pb-3 pl-3">
+    <h4>Tahrirlash</h4>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mt-3"
+        style="display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap;">
+        <form method="POST" action="<%=`/api/category/${category._id}?_method=PUT`%>" class="col-md-8">
+            <div class="mb-3">
+                <label>Name</label>
+                <input name="nameuz" type="text" class="form-control" value="<%= category.name.uz %>"  />
+            </div>
+            <div class="mb-3">
+                <label>Название</label>
+                <input name="nameru" type="text" class="form-control" value="<%= category.name.ru %>"  />
+            </div>
+    
+            <button type="submit" class="btn btn-primary col-md-5 mt-3">Saqlash</button>
+        </form>
+
+
+    </div>
+
+</div>

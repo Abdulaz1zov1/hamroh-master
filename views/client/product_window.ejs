@@ -1,0 +1,334 @@
+<% var products %>
+    <% var product %>
+    <% var user %> 
+        <div class="buy_product_cards">
+            <div class="head">
+                <div class="left">
+                    <div class="imgs">
+                        <img src="/images/top.png" alt="" class="top">
+                        <div class="img active"><img src="<%= product?.poster %> " alt=""></div>
+                        <% for(i=0; i<3; i++) {%>
+                            <div class="img"><img src="<%= product?.images[0]?.url %> " alt=""></div>
+                            <% } %>
+                                <img src="/images/bottom.png" alt="" class="bottom">
+                    </div>
+                    <div class="img_div">
+                        <img src="<%= product?.poster %> " alt="">
+                    </div>
+                </div>
+                <div class="right">
+                    <% if(lang ==='uz' ){ %>
+                        <p><%= product?.name?.uz %></p>
+                        <% } %>
+                        <%  if(lang==='ru' ){ %>
+                            <p><%= product?.name?.ru %></p>
+                        <% }%>
+                        <%  if(lang==undefined ){ %>
+                            <p><%= product?.name?.uz %></p>
+                        <% } %>
+                    <div class="summa">
+                        <p><%= translation.pag %> :</p>
+                        <p class="price">
+                            <%= product?.price%>
+                        </p>
+                        <p><%= translation.som %></p>
+                    </div>
+                    <div class="about_product">
+                        <% if(lang ==='uz' ){ %>
+                            <p><%= product?.description?.uz %></p>
+                            <% } %>
+                            <%  if(lang==='ru' ){ %>
+                                <p><%= product?.description?.ru %></p>
+                            <% }%>
+                            <%  if(lang==undefined ){ %>
+                                <p><%= product?.description?.uz %></p>
+                            <% } %>
+                    </div>
+                    <div class="about_product">
+                        <input type="hidden" id="product_id" value="<%= product?._id %>">
+                    </div>
+                </div>
+            </div>
+            <div class="pay_summa">
+                <p><%= translation.mudd %> :</p>
+                <div class="month">
+                    <div>
+                        <input type="radio" id="a" name="input" checked>
+                        <label for="a">3 <%= translation.oy %></label>
+                    </div>
+                    <div>
+                        <input type="radio" id="b" name="input">
+                        <label for="b">6 <%= translation.oy %></label>
+                    </div>
+                    <div>
+                        <input type="radio" id="c" name="input">
+                        <label for="c">9 <%= translation.oy %></label>
+                    </div>
+                    <div>
+                        <input type="radio" id="d" name="input">
+                        <label for="d">12 <%= translation.oy %></label>
+                    </div>
+                </div>
+                <div class="taqsimot">
+                    <div class="box_1">
+                        <p><%= translation.oyy %>:</p>
+                        <div>
+                            <p class="price">162000</p>
+                            <p><%= translation.som %></p>
+                        </div>
+                    </div>
+                    <div class="box_2">
+                        <p><%= translation.umm%></p>
+                        <div>
+                            <p class="price">5120000</p>
+                            <p><%= translation.som %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="add_basket" class="send_basket"><%= translation.savatcha %></button>
+            <div class="similar_products">
+                <span><%= translation.oxx %> </span>
+                <div class="cards">
+                    <% for(let item of products || []) { %>
+                        <div class="box">
+                            <a href="/product/<%= item?._id %> ">
+                                <div class="card_icon">
+                                    <img src="<%= item?.poster %>" alt="">
+                                </div>
+                                <div class="about_product">
+                                    <% if(lang ==='uz' ){ %>
+                                        <p><%= item?.name?.uz %></p>
+                                        <% } %>
+                                        <%  if(lang==='ru' ){ %>
+                                            <p><%= item?.name?.ru %></p>
+                                        <% }%>
+                                        <%  if(lang==undefined ){ %>
+                                            <p><%= item?.name?.uz %></p>
+                                        <% } %>
+                                    
+                                    <!-- <p>Samsung s21 ultra</p> -->
+                                </div>
+                                <div class="sharxlar">
+                                    <div>
+                                        <img onclick="mark('<%= item?._id %>', 1)" src="/images/Star 11.png" alt="">
+                                        <img onclick="mark('<%= item?._id %>', 2)" src="/images/Star 11.png" alt="">
+                                        <img onclick="mark('<%= item?._id %>', 3)" src="/images/Star 11.png" alt="">
+                                        <img onclick="mark('<%= item?._id %>', 4)" src="/images/Star 11.png" alt="">
+                                        <img onclick="mark('<%= item?._id %>', 5)" src="/images/Star 11.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="/images/comment.png" alt="">
+                                        <p class="comment_number">0</p>
+                                        <p><%= translation.sharhlar %> </p>
+                                    </div>
+                                    <p></p>
+                                </div>
+                            </a>
+                            <div class="price">
+                                <p><%= translation.pag %> :</p>
+                                <p class="summa"><%= item?.price %></p>
+                                <p><%= translation.som %></p>
+                            </div>
+                            <div class="card_btn"><button><%= translation.savatcha %></button></div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <input type="hidden" id="myPrice" value="<%= product?.price %>">
+
+
+
+        <% if(!user) {%>
+            <input type="hidden"  id="user_id">
+            <% }else {%>
+                <input type="hidden" id="user_id" value="<%= user?._id %>">
+                <% }%>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/axios.min.js"></script>
+        <script src="/script/index.js"></script>
+        <script>
+
+
+            // savatchaga qoshish
+            const product_id = document.getElementById('product_id').value
+            const user_id = document.getElementById('user_id')
+            const add_basket = document.getElementById('add_basket')
+
+            add_basket.addEventListener("click", () => {
+                if (user_id.value == "") {
+                    console.log(`Savatga qo'shishdan oldin "Ro'yhatdan  o'ting" va "Kirish" tugmasi orqali avtorizatsiyadan o'ting`)
+                } else {
+                    axios({
+                        url: "/api/basket",
+                        method: "POST",
+                        data: {
+                            productID: product_id,
+                            userID: user_id.value
+                        }
+                    }).then(res => {
+                        location.reload()
+                        // console.log(res.data)
+                    })
+                }
+
+            })
+
+
+
+
+
+            // Yulduzcha uchun
+            function mark(product_id, numbers) {
+                axios({
+                    url: "/api/rating/add",
+                    method: "POST",
+                    data: {
+                        rating: numbers,
+                        product: product_id,
+                    }
+                }).then(res => {
+                    location.reload()
+                })
+            }
+
+
+
+           
+
+            // O'xshah maxsulotlarni ham savatga tashlash
+            function collecting(product_id) {
+                if (user_id.value =="") {
+                    console.log(`Savatga qo'shishdan oldin "Ro'yhatdan  o'ting" va "Kirish" tugmasi orqali avtorizatsiyadan o'ting`)
+                } else {
+                    // console.log(product  _id)
+                    axios({
+                        url: "/api/basket",
+                        method: "POST",
+                        data: {
+                            productID: product_id,
+                            userID: user_id.value,
+                        }
+                    }).then(res => {
+                        location.reload()
+                        // console.log(res.data)
+                    })
+                }
+            }
+
+
+        function regExp() {
+        let regExp1 = document.querySelectorAll('.buy_product_cards .head .right .summa .price');
+        regExp1.forEach(item => {
+            item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        })
+        let regExp2 = document.querySelectorAll('.buy_product_cards .pay_summa .taqsimot div div .price');
+        regExp2.forEach(item => {
+            item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        })
+        let regExp3 = document.querySelectorAll('.root .buy_product_cards .similar_products .cards .box .price');
+        regExp3.forEach(item => {
+            item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        })
+    }
+    const narx = document.getElementById('myPrice').value;
+    document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_1 div .price').innerHTML = Math.ceil(narx/3)
+    document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_1 div .price').innerHTML = Math.ceil( document.getElementById('myPrice').value/3);
+    document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_2 div .price').innerHTML = narx
+    // const narx = 100000;
+    
+    document.querySelectorAll('.buy_product_cards .pay_summa .month div label').forEach((item, i) => {
+        item.onclick = () => {
+            if(i == 0) { 
+                document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_1 div .price').innerHTML =Math.ceil( narx/3)
+                document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_2 div .price').innerHTML = narx
+                regExp()
+            } 
+            if(i == 1) { 
+                document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_1 div .price').innerHTML = Math.round(Math.ceil((narx*(1.03*1.03*1.03)) / 6))
+                document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_2 div .price').innerHTML = Math.round(narx*(1.03*1.03*1.03))
+                regExp()
+             } 
+            if(i == 2) { 
+                document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_1 div .price').innerHTML = Math.round(Math.ceil((narx *1.03*1.03*1.03*1.03*1.03*1.03) / 9))
+                document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_2 div .price').innerHTML = Math.round(narx *1.03*1.03*1.03*1.03*1.03*1.03)
+                regExp()
+             } 
+             
+            if(i == 3) { 
+                document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_1 div .price').innerHTML = Math.round(Math.ceil(narx* 1.03*1.03*1.03*1.03*1.03*1.03*1.03*1.03*1.03)/12)
+                document.querySelector('.buy_product_cards .pay_summa .taqsimot .box_2 div .price').innerHTML = Math.round((narx* 1.03*1.03*1.03*1.03*1.03*1.03*1.03*1.03*1.03))
+                regExp()
+             }
+        }
+    })
+
+    
+
+    // document.querySelector('.buy_product_cards .send_basket').onclick = () => {
+    //     if(document.querySelector('.number_product div input').value <= 0) {
+    //         alert('Mahsulot sonini to`g`ri kiriting!')
+    //     } else {
+    //         alert('Mahsulot savatchaga qo`shildi! Savatchaga o`ting!')
+    //     }
+    // }
+
+
+    document.querySelectorAll('.head .left .imgs .img').forEach(item => {
+        item.onclick = () => {
+            document.querySelectorAll('.head .left .imgs .img').forEach(img => {
+                img.classList.remove('active')
+            })
+            document.querySelector('.head .left .img_div').innerHTML = item.innerHTML
+            item.classList.add('active')
+        }
+    })
+    document.querySelector('.head .left .imgs .top').onclick = () => {
+        let number = 0
+        document.querySelectorAll('.head .left .imgs .img').forEach((img, i) => {
+            if(img.className.includes('active')) {
+                number = i
+            }
+        })
+        document.querySelectorAll('.head .left .imgs .img').forEach(img => {
+            img.classList.remove('active')
+        })
+        if(number == 0) {
+            document.querySelectorAll('.head .left .imgs .img')[document.querySelectorAll('.head .left .imgs .img').length - 1].classList.add('active')
+            document.querySelector('.head .left .img_div').innerHTML = document.querySelectorAll('.head .left .imgs .img')[document.querySelectorAll('.head .left .imgs .img').length - 1].innerHTML
+        } else {
+            document.querySelectorAll('.head .left .imgs .img')[number - 1].classList.add('active')
+            document.querySelector('.head .left .img_div').innerHTML = document.querySelectorAll('.head .left .imgs .img')[number - 1].innerHTML
+        }
+    }
+
+    document.querySelector('.head .left .imgs .bottom').onclick = () => {
+        let number = 0
+        document.querySelectorAll('.head .left .imgs .img').forEach((img, i) => {
+            if(img.className.includes('active')) {
+                number = i
+            }
+        })
+        document.querySelectorAll('.head .left .imgs .img').forEach(img => {
+            img.classList.remove('active')
+        })
+        if(number == document.querySelectorAll('.head .left .imgs .img').length - 1) {
+            document.querySelectorAll('.head .left .imgs .img')[0].classList.add('active')
+            document.querySelector('.head .left .img_div').innerHTML = document.querySelectorAll('.head .left .imgs .img')[0].innerHTML
+        } else {
+            document.querySelectorAll('.head .left .imgs .img')[number + 1].classList.add('active')
+            document.querySelector('.head .left .img_div').innerHTML = document.querySelectorAll('.head .left .imgs .img')[number + 1].innerHTML
+        }
+    }
+
+    regExp()
+        </script>
+        </body>
+
+        </html>

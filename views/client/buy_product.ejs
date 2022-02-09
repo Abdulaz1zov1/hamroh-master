@@ -1,0 +1,616 @@
+<style>
+    .success_register {
+        border-radius: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        position: fixed;
+        width: 50%;
+        height: 200px;
+        top: 17%;
+        left: 25%;
+        right: 25%;
+        background-color: #F9CA48;
+        z-index: 50000000000000000000000000000000000000000;
+        display: none;
+    }
+
+    .flexing {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .success_register p {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .btn_register {
+        border: none;
+        outline: none;
+        margin-top: 30px;
+        padding: 10px 30px;
+        background-color: #000000;
+        color: white;
+        font-weight: 600;
+        border-radius: 10px;
+    }
+
+    .order_modalss {
+        border-radius: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        position: fixed;
+        width: 50%;
+        height: 550px;
+        top: 10%;
+        left: 25%;
+        right: 25%;
+        background-color: #F9CA48;
+        z-index: 100000000000000000000000000000000;
+        padding: 50px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #see_order_modalss {
+        display: none;
+    }
+
+    .order_modalss input {
+        padding: 10px;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        margin-top: 20px;
+        outline: none;
+        font-size: 20px;
+    }
+
+    .order_modalss h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+
+    .orders_buttons {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .orders_buttons .btnss {
+        font-size: 20px;
+        background-color: #272727;
+        width: 50%;
+        padding: 15px 30px;
+        border: none;
+        outline: none;
+    }
+
+    .orders_buttons .btnss:nth-child(1) {
+        background-color: rgb(65, 145, 41);
+    }
+
+    .orders_buttons .btnss:nth-child(2) {
+        background-color: rgb(218, 93, 36);
+    }
+</style>
+
+
+<style>
+    .buy_products {
+        margin: 5vh 3vw;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .buy_products .card {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-radius: 1vw;
+    }
+
+    .buy_products .card .card_icon {
+        width: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .buy_products .card .card_icon img {
+        width: 70%;
+        margin: 2vh auto;
+    }
+
+    .buy_products .card .card_name {
+        width: 25%;
+    }
+
+    .buy_products .card .card_name p {
+        font-size: 1.4vw;
+        margin: 0.8vh 0.5vw
+    }
+
+    .buy_products .card .card_name p:first-child {
+        color: #082f5e;
+        font-weight: 600;
+    }
+
+    .buy_products .card .card_price,
+    .buy_products .card .all_price {
+        width: 18%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .buy_products .card .card_price p,
+    .buy_products .card .all_price p {
+        font-size: 1.4vw;
+    }
+
+    .buy_products .card .card_price p:first-child,
+    .buy_products .card .all_price p:first-child {
+        margin-right: 0.5vw;
+    }
+
+    .buy_products .card .number_product {
+        display: flex;
+        align-items: center;
+        font-size: 1.4vw;
+        width: 10%;
+    }
+
+    .buy_products .card .number_product div {
+        border-radius: 0.4vw;
+        overflow: hidden;
+        height: 5vh;
+        margin-left: 3vw;
+        display: flex;
+        border: 1px solid #082f5e;
+        margin: 2vh auto;
+    }
+
+    .buy_products .card .number_product div>p {
+        width: 25%;
+        height: 100%;
+        line-height: 5vh;
+        border: none;
+        outline: none;
+        font-size: 1.4vw;
+        font-weight: 900;
+        background-color: #082f5e;
+        color: white;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .buy_products .card .number_product div input {
+        width: 50%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-left: 0.1vw solid #082f5e;
+        border-right: 0.1vw solid #082f5e;
+        text-align: center;
+        font-size: 1.2vw;
+    }
+
+    .buy_products .card .card_btn {
+        width: 14%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .buy_products .card .card_btn button {
+        width: 90%;
+        padding: 1vh 0;
+        font-size: 1.2vw;
+        outline: none;
+        background-color: #082f5e;
+        border: none;
+        border-radius: 1.5vw;
+        color: white;
+        margin: 1vh 0;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.308), 0 3px 6px rgba(0, 0, 0, 0.295);
+    }
+
+    .buy_products .card .card_btn button:active,
+    .page .buy_product:active {
+        background-color: #fff;
+        color: #000;
+    }
+
+    .title_product {
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        margin: 3vh 3vw;
+        font-size: 1.4vw;
+        font-weight: 600;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .title_product .pr_name {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title_product .pr_price,
+    .title_product .pr_all_price {
+        width: 18%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title_product .pr_number {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page .buy_product {
+        display: block;
+        width: 20vw;
+        padding: 1.8vh 0;
+        background-color: #082f5e;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.4vw;
+        border-radius: 1.8vw;
+        border: none;
+        outline: none;
+        margin: 1vh auto;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(128, 116, 116, 0.308), 0 3px 6px rgba(0, 0, 0, 0.295);
+    }
+</style>
+
+
+<% if(!user) {%>
+    <input type="hidden" id="user_id">
+    <% }else {%>
+        <input type="hidden" style="margin: 25px;" id="user_id" value="<%= user._id %>">
+        <% }%>
+
+            <!-- notification modal -->
+            <div class="success_register" id="deleted_basketssss">
+                <div class="flexing">
+                    <p><%= translation.delete_basket  %></p>
+                    <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+                </div>
+            </div>
+            
+            <!-- buyurtma modal -->
+            <div class="success_register" id="error_filling">
+                <div class="flexing">
+                    <p><%= translation.fill_up  %> </p>
+                    <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+                </div>
+            </div>
+            <div class="success_register" id="success_order">
+                <div class="flexing">
+                    <p><%= translation.success_basket  %> </p>
+                    <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+                </div>
+            </div>
+
+
+
+            <!-- order modal -->
+            <div id="see_order_modalss">
+                <div class="order_modalss">
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="page">
+                <p>
+                    <%= translation.ssav %>
+                </p>
+                <div class="title_product">
+                    <div class="pr_name">
+                        <%= translation.maxx %>
+                    </div>
+                    <div class="pr_price">
+                        <%= translation.pag %>
+                    </div>
+                    <div class="pr_number">
+                        <%= translation.snn %>
+                    </div>
+                    <div class="pr_all_price">
+                        <%= translation.umm %>
+                    </div>
+                </div>
+                <div class="buy_products">
+
+
+
+                </div>
+                <!-- <button class="buy_product">
+                    <%= translation.xar %>
+                </button>
+                <div class="total_summa">
+                    <p>
+                        <%= translation.jamp %>:
+                    </p>
+                    <p class="price"></p>
+                    <p>
+                        <%= translation.som %>
+                    </p>
+                </div> -->
+
+                <div class="window get_modal_order">
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="/axios.min.js"></script>
+            <script>
+
+                function reload_all() {
+                    location.reload()
+                }
+
+                // User oziga tegisli hamma basketlarni olish
+                const user_id = document.getElementById('user_id').value
+                axios.get(`/api/basket/${user_id}`)
+                    .then(async (res) => {
+                        const result = res.data
+                        let select = $(".buy_products");
+                        await select.html("");
+                        result.forEach(item => {
+                            select.append(
+                                `
+                                        <div class="card" ">
+                                            <div class="card_icon"">
+                                                <img src="${item.productID.poster}" alt="">
+                                            </div>
+                                            <div class="card_name">
+                                                <p>${item.productID.name.uz}</p>
+                                            </div>
+                                            <div class="card_price">
+                                                <p class="summa">${item.productID.price}</p>
+                                                <p>so'm</p>
+                                            </div>
+                                            
+                                            <div  class="all_price">
+                                                <p class="all_summa">${1}</p>
+                                                <p> ta</p>
+                                            </div>
+                                            <div  class="card_btn">
+                                                <button onclick="show_modal('${item.productID._id}')">Buyurtma</button>
+                                                <button onclick="delete_for('${item._id}')">O'chirish</button>
+                                            </div>
+                                        </div>
+                                        `
+                            );
+                        });
+                    });
+
+
+                // Buyurtma berish
+
+               
+
+                function show_modal(ID) {
+                    document.getElementById('see_order_modalss').style.display = "block"
+                    let select = $(".order_modalss");
+                    select.html("");
+                    select.append(`
+                                <h1>Buyurtma berish</h1>
+                                <input placeholder="Nechta buyurtma bermoqchisiz ?" value="1" id="product_count" type="number">
+                                <input placeholder="Manzilni kiriting"  id="user_address" type="text">
+                                <input placeholder="Telefon raqam" id="user_phone" type="number">
+                                <input placeholder="Mahsulot ID" id="prod_id" value="${ID}" type="hidden">
+                                <div class="orders_buttons">
+                                    <button type="button" class="btnss" style="margin: 0 10px" onclick="sendingg_modal('${ID}')" >Ok</button>
+                                    <button type="button" class="btnss" style="margin: 0 10px" onclick="close_modal()" >Back</button>
+                                </div>
+                            `)
+
+                }
+
+                function sendingg_modal(ID) {
+
+                    const user_IDss = document.getElementById('user_id').value
+                    const user_phone = document.getElementById('user_phone').value
+                    const user_address = document.getElementById('user_address').value
+                    const product_count = document.getElementById('product_count').value
+                    const prod_id = document.getElementById('prod_id').value
+
+                    if (user_IDss == "" || user_phone == "" || user_address == "" || product_count == "" || prod_id == "") {
+                        document.getElementById('error_filling').style.display = 'block'
+                        document.getElementById('see_order_modalss').style.display = 'none'
+                    } else {
+                        axios.post("/api/order/create", {
+                            phone: user_phone,
+                            address: user_address,
+                            total_Number: product_count,
+                            productID: prod_id,
+                            userID: user_IDss
+                        })
+                            .then(res => {
+                                document.getElementById('success_order').style.display = 'block'
+                                document.getElementById('see_order_modalss').style.display = 'none'
+                            })
+                            .catch((error) => {
+                                console.log(error)
+                            })
+                    }
+                }
+
+                function close_modal() {
+                    document.getElementById('see_order_modalss').style.display = "none"
+                }
+
+
+
+                // savatchadan ochirish uchun mahsulotni
+                function delete_for(product_id) {
+                    axios.delete(`/api/basket/${product_id}`)
+                        .then(res => {
+                            console.log("savatchadagi o'chdi")
+                        })
+                        .catch((error) => {
+                            console.log("Savatchadan ochirishda xatolik bor")
+                        })
+                    document.getElementById('deleted_basketssss').style.display = 'block'
+                }
+
+
+
+
+
+
+
+
+                // let regExp5 = document.querySelector('.total_summa .price');
+                // document.querySelector('.page .window .shop_window .close_shop').onclick = () => {
+                //     document.querySelector('.page').style.height = 'auto'
+                //     document.querySelector('.page').style.overflow = 'auto'
+                //     document.querySelector('.page .window').style.display = 'none'
+                //     document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+                //         item.value = ''
+                //     })
+                // }
+                // let check_input = true
+                // document.querySelector('.page .window .shop_window .window_body .send').onclick = () => {
+                //     document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+                //         if (item.value == '') {
+                //             check_input = false
+                //         }
+                //     })
+                //     if (!check_input) {
+                //         alert('Ma`lumotlarni to`liq kiriting!')
+                //         check_input = true
+                //     } else {
+                //         alert('Xaridingiz uchun tashakkur!')
+                //         document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+                //             item.value = ''
+                //         })
+                //         document.querySelector('.page').style.height = 'auto'
+                //         document.querySelector('.page').style.overflow = 'auto'
+                //         document.querySelector('.page .window').style.display = 'none'
+                //     }
+                // }
+
+                // document.querySelector('.page .buy_product').onclick = () => {
+                //     document.querySelector('.page .window').style.display = 'block'
+                //     document.querySelector('.page').style.height = '100vh'
+                //     document.querySelector('.page').style.overflow = 'hidden'
+                // }
+
+                // function totalPrice() {
+                //     let total_sum = 0
+                //     document.querySelectorAll('.buy_products .card .all_price .all_summa').forEach((item, i) => {
+                //         document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, "")
+                //         let son = document.querySelectorAll('.buy_products .card .number_product input')[i].value * 1;
+                //         let narx = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML * 1
+                //         item.innerHTML = son * narx
+                //         item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                //         document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+
+                //     })
+                //     document.querySelectorAll('.buy_products .card .all_price .all_summa').forEach(item => {
+                //         item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, "")
+                //         total_sum = total_sum + item.innerHTML * 1
+                //         regExp5.innerHTML = total_sum
+                //         item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                //         regExp()
+                //     })
+                // }
+
+                // document.querySelectorAll('.number_product div input').forEach(item => {
+                //     item.addEventListener('keyup', () => {
+                //         totalPrice()
+                //     })
+                // })
+
+                // document.querySelectorAll('.card .card_btn button').forEach(item => {
+                //     item.onclick = () => {
+                //         item.parentElement.parentElement.remove()
+                //         totalPrice()
+                //     }
+                // })
+
+                // document.querySelector('.number_product div .minus').onclick = () => {
+                //     const input = document.querySelector('.number_product div input')
+                //     if (input.value == 1) {
+                //         input.value = 1
+                //     } else {
+                //         input.value -= 1
+                //     }
+                //     totalPrice()
+                // }
+
+                // document.querySelector('.number_product div .plus').onclick = () => {
+                //     document.querySelector('.number_product div input').value = document.querySelector('.number_product div input').value * 1 + 1
+                //     totalPrice()
+                // }
+
+                // function regExp() {
+                //     let regExp4 = document.querySelectorAll('.buy_products .card .card_price .summa');
+                //     regExp4.forEach(item => {
+                //         item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                //     })
+                //     let regExp1 = document.querySelectorAll('.buy_products .card .all_price .all_summa');
+                //     regExp1.forEach(item => {
+                //         item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                //     })
+                //     regExp5.innerHTML = regExp5.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                // }
+
+                // regExp()
+                // totalPrice()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </script>

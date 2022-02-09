@@ -1,0 +1,499 @@
+<style>
+    .success_register {
+        border-radius: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        position: fixed;
+        width: 50%;
+        height: 200px;
+        top: 17%;
+        left: 25%;
+        right: 25%;
+        background-color: #F9CA48;
+        z-index: 50000000000000000000000000000000000000000;
+        display: none;
+    }
+
+    .flexing {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .success_register p {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .btn_register {
+        border: none;
+        outline: none;
+        margin-top: 30px;
+        padding: 10px 30px;
+        background-color: #000000;
+        color: white;
+        font-weight: 600;
+        border-radius: 10px;
+    }
+
+    .order_modalss {
+        border-radius: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        position: fixed;
+        width: 50%;
+        height: 550px;
+        top: 10%;
+        left: 25%;
+        right: 25%;
+        background-color: #F9CA48;
+        z-index: 100000000000000000000000000000000;
+        padding: 50px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #see_order_modalss {
+        display: none;
+    }
+
+    .order_modalss input {
+        padding: 10px;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        margin-top: 20px;
+        outline: none;
+        font-size: 20px;
+    }
+
+    .order_modalss h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+
+    .orders_buttons {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .orders_buttons .btnss {
+        font-size: 20px;
+        background-color: #272727;
+        width: 50%;
+        padding: 15px 30px;
+        border: none;
+        outline: none;
+    }
+
+    .orders_buttons .btnss:nth-child(1) {
+        background-color: rgb(65, 145, 41);
+    }
+
+    .orders_buttons .btnss:nth-child(2) {
+        background-color: rgb(218, 93, 36);
+    }
+</style>
+
+
+<% if(!user) {%>
+    <input type="hidden">
+    <% }else {%>
+        <input type="hidden" style="margin: 25px;" id="user_id" value="<%= user?._id %>">
+        <% }%>
+
+            <!-- notification modal -->
+            <div class="success_register" id="deleted_basketssss">
+                <div class="flexing">
+                    <p>
+                        <%= translation.delete_basket %>
+                    </p>
+                    <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+                </div>
+            </div>
+
+            <!-- buyurtma modal -->
+            <div class="success_register" id="error_filling">
+                <div class="flexing">
+                    <p>
+                        <%= translation.fill_up %>
+                    </p>
+                    <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+                </div>
+            </div>
+            <div class="success_register" id="success_order">
+                <div class="flexing">
+                    <p>
+                        <%= translation.success_basket %>
+                    </p>
+                    <button type="button" onclick="reload_all()" class="btn_register">Back</button>
+                </div>
+            </div>
+
+
+
+            <!-- order modal -->
+            <div id="see_order_modalss">
+                <div class="order_modalss">
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="page">
+                <% var arr=[] %>
+                    <p><%= translation.ssav %> </p>
+                    <div class="title_product">
+                        <div class="pr_name"><%= translation.maxx %></div>
+                        <div class="pr_price"><%= translation.pag %></div>
+                        <div class="pr_number"><%= translation.snn %></div>
+                        <div class="pr_all_price"><%= translation.umm %></div>
+                    </div>
+                    <div class="buy_products">
+
+                        <% for(item of result){ %>
+                            <div class="card">
+                                <div class="card_icon">
+                                    <img src="<%= item?.productID?.poster %> " alt="">
+                                </div>
+                                <div class="card_name">
+                                    <% if(lang==='uz' ){ %>
+                                        <p>
+                                            <%= item?.productID?.name?.uz %>
+                                        </p>
+                                        <% } %>
+                                            <% if(lang==='ru' ){ %>
+                                                <p>
+                                                    <%= item?.productID?.name?.ru %>
+                                                </p>
+                                                <% }%>
+                                                    <% if(lang==undefined ){ %>
+                                                        <p>
+                                                            <%= item?.productID?.name?.uz %>
+                                                        </p>
+                                                        <% } %>
+                                </div>
+                                <div class="card_price">
+                                    <p class="summa">
+                                        <%= item?.productID?.price %>
+                                    </p>
+                                    <p>so'm</p>
+                                </div>
+                                <div class="number_product">
+                                    <div>
+                                        <p class="minus">-</p>
+                                        <input type="text" id="quantyy" value="1">
+                                        <p class="plus">+</p>
+                                    </div>
+                                </div>
+                                <div class="all_price">
+                                    <p id="totalsummm" class="all_summa">1000</p>
+                                    <p>so'm</p>
+                                </div>
+                                <div class="card_btn_btn">
+                                    <!-- <button onclick="delete_for(`${item?._id}`)" >Xarid qilmaslik</button> -->
+                                    <form method="POST" class="hidden-r"
+                                        action="<%=`/api/basket/${item?._id}?_method=DELETE`%>">
+                                        <button type="submit" class="btn btn-danger">
+                                            <%= translation.xaxax %>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <% arr.push({ productId: item?.productID?._id }) %>
+
+                                <% } %>
+                    </div>
+                    <button id="sendBuyProduct" class="buy_product"> <%= translation.xar %></button>
+                    <div class="total_summa">
+                        <p><%= translation.umm %></p>
+                        <p class="price"></p>
+                        <p> <%= translation.som %></p>
+                    </div>
+                    <div class="window">
+                        <div class="shop_window">
+                            <div class="window_body">
+                                <div class="option">
+                                    <input type="text" id="user_name" required>
+                                    <label for="input1"> <%= translation.ismm %></label>
+                                </div>
+                                <div class="option">
+                                    <input type="text" id="user_surname" required>
+                                    <label for="input2"> <%= translation.famil %></label>
+                                </div>
+                                <div class="option">
+                                    <input type="number" id="user_phone" required>
+                                    <label for="user_phone"><%= translation.telefon %></label>
+                                </div>
+                                <div class="option">
+                                    <input type="text" id="user_address" required>
+                                    <label for="user_phone"> <%= translation.manzil %></label>
+                                </div>
+                                <button id="sendOrder" class="send"><%= translation.ok %></button>
+                            </div>
+                            <div class="close_shop">X</div>
+                        </div>
+                    </div>
+            </div>
+
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="/axios.min.js"></script>
+            <script src="./script/index.js"></script>
+
+
+
+            <script>
+
+
+
+
+
+
+
+
+
+
+                let regExp5 = document.querySelector('.total_summa .price');
+
+                let check_input = true
+                // document.querySelector('.page .window .shop_window .window_body .send').onclick = () => {
+                //     document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+                //         if (item.value == '') {
+                //             check_input = false
+                //         }
+                //     })
+                //     if (!check_input) {
+                //         alert('Ma`lumotlarni to`liq kiriting!')
+                //         check_input = true
+                //     } else {
+                //         alert('Xaridingiz uchun tashakkur!')
+                //         document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+                //             item.value = ''
+                //         })
+                //         document.querySelector('.page').style.height = 'auto'
+                //         document.querySelector('.page').style.overflow = 'auto'
+                //         document.querySelector('.page .window').style.display = 'none'
+                //     }
+                // }
+
+                document.querySelector('.page .buy_product').onclick = () => {
+                    window.scrollBy(0, -window.innerHeight)
+                    document.querySelector('body').style.overflowY = 'hidden'
+                    document.querySelector('.page .window').style.display = 'block'
+                }
+
+                document.querySelector('.page .window .shop_window .close_shop').onclick = () => {
+                    document.querySelector('body').style.overflowY = 'auto'
+                    document.querySelector('.page .window').style.display = 'none'
+                    document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+                        item.value = ''
+                    })
+                }
+
+                function totalPrice() {
+                    let total_sum = 0
+                    document.querySelectorAll('.buy_products .card .all_price .all_summa').forEach((item, i) => {
+                        document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, "")
+                        let son = document.querySelectorAll('.buy_products .card .number_product input')[i].value * 1;
+                        let narx = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML * 1
+                        item.innerHTML = son * narx
+                        item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                        document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+
+                    })
+                    document.querySelectorAll('.buy_products .card .all_price .all_summa').forEach(item => {
+                        item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, "")
+                        total_sum = total_sum + item.innerHTML * 1
+                        regExp5.innerHTML = total_sum
+                        item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                        regExp()
+                    })
+                }
+
+                document.querySelectorAll('.number_product div input').forEach(item => {
+                    item.addEventListener('keyup', () => {
+                        totalPrice()
+                    })
+                })
+
+                document.querySelectorAll('.card .card_btn button').forEach(item => {
+                    item.onclick = () => {
+                        item.parentElement.parentElement.remove()
+                        totalPrice()
+                    }
+                })
+
+                document.querySelectorAll('.number_product div .minus').forEach((item, i) => {
+                    item.onclick = () => {
+                        const input = document.querySelectorAll('.number_product div input')[i]
+                        if (input.value == 1) {
+                            input.value = 1
+                        } else {
+                            input.value -= 1
+                        }
+                        totalPrice()
+                    }
+                })
+
+
+                document.querySelectorAll('.number_product div .plus').forEach((item, i) => {
+                    item.onclick = () => {
+                        const input = document.querySelectorAll('.number_product div input')[i]
+                        input.value = input.value * 1 + 1
+                        totalPrice()
+                    }
+                })
+
+                function regExp() {
+                    let regExp4 = document.querySelectorAll('.buy_products .card .card_price .summa');
+                    regExp4.forEach(item => {
+                        item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString()
+                    })
+                    let regExp1 = document.querySelectorAll('.buy_products .card .all_price .all_summa');
+                    regExp1.forEach(item => {
+                        item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString()
+                    })
+                    regExp5.innerHTML = regExp5.innerHTML.replace(/\s+/g, '').toString()
+                }
+
+                regExp()
+                totalPrice()
+
+
+
+
+
+                function reload_all() {
+                    location.reload()
+                }
+
+                // User oziga tegisli hamma basketlarni olish
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                function show_modal(ID) {
+                    document.getElementById('see_order_modalss').style.display = "block"
+                    let select = $(".order_modalss");
+                    select.html("");
+                    select.append(`
+                                <h1>Buyurtma berish</h1>
+                                <input placeholder="Nechta buyurtma bermoqchisiz ?" value="1" id="product_count" type="number">
+                                <input placeholder="Manzilni kiriting"  id="user_address" type="text">
+                                <input placeholder="Telefon raqam" id="user_phone" type="number">
+                                <input placeholder="Mahsulot ID" id="prod_id" value="${ID}" type="hidden">
+                                <div class="orders_buttons">
+                                    <button type="button" class="btnss" style="margin: 0 10px" onclick="sendingg_modal('${ID}')" >Ok</button>
+                                    <button type="button" class="btnss" style="margin: 0 10px" onclick="close_modal()" >Back</button>
+                                </div>
+                            `)
+
+                }
+
+
+
+
+
+
+
+
+
+
+                const user_id = document.getElementById('user_id').value
+                const sendOrder = document.getElementById('sendOrder');
+
+
+
+                //----------------------------- massivdagi mahsulotlarning hamma summalarini olish
+                const allSummalar = []
+                document.querySelectorAll('.all_summa').forEach((item) => {
+                    allSummalar.push(parseInt(item.innerHTML.trim()))
+                })
+                const resulting = allSummalar.reduce((a, b) => a + b, 0)
+                console.log("Total-Summa", resulting)
+
+
+
+
+
+                const all_products = []
+                axios.get(`/api/basket/${user_id}`)
+                    .then((res) => {
+                        const result = res.data
+                        result.map((item) => all_products.push(item.productID._id));
+                    })
+
+                console.log("Total-Product", all_products)
+
+
+
+                sendOrder.addEventListener("click", () => {
+                    const user_phone = document.getElementById('user_phone').value
+                    const user_address = document.getElementById('user_address').value
+                    const user_name = document.getElementById('user_name').value
+                    const user_surname = document.getElementById('user_surname').value
+                    const user_ID = document.getElementById('user_id').value
+                    axios.post('/api/order/create', {
+                        phone: user_phone,
+                        address: user_address,
+                        totalPrice: resulting,
+                        user_name: user_name,
+                        user_surname: user_surname,
+                        userID: user_ID,
+                        product_ID: all_products,
+                    })
+                        .then(res => {
+                            location.reload()
+                        })
+                        .catch(err => {
+                            console.log("errr->", err);
+                        })
+                })
+
+
+                function close_modal() {
+                    document.getElementById('see_order_modalss').style.display = "none"
+                }
+                // savatchadan ochirish uchun mahsulotni
+                function delete_for(product_id) {
+                    axios.delete(`/api/basket/${product_id}`)
+                        .then(res => {
+                            console.log("savatchadagi o'chdi")
+                        })
+                        .catch((error) => {
+                            console.log("Savatchadan ochirishda xatolik bor")
+                        })
+                    document.getElementById('deleted_basketssss').style.display = 'block'
+                }
+
+            </script>
